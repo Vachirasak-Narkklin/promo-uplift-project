@@ -1,0 +1,10 @@
+pandas
+numpy
+pyarrow
+matplotlib
+plotly
+scikit-learn
+lightgbm
+scikit-uplift
+ipykernel
+kaggle
