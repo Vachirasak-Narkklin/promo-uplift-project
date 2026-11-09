@@ -6,6 +6,8 @@ When a discount drives a spike in sales, most people call it a win. But part of 
 
 I used two years of grocery transactions from about 2,500 households to find out.
 
+**[One-page executive summary](reports/executive_summary.md)** · **[Interactive dashboard](#dashboard)**
+
 ## Key findings
 
 **1. Only about 18% of volume is genuinely driven by promotions.** The rest would have sold anyway. Some categories barely respond at all. Bread is discounted about 20% on average, yet only around 4% of its volume is incremental, so most of that discount goes to people who were buying bread regardless.
@@ -82,8 +84,13 @@ notebooks/
   03_model.ipynb
   04_simulator.ipynb
   05_uplift.ipynb
-reports/figures/                   charts used in this README
-app/                               scenario simulator dashboard (in progress)
+reports/
+  executive_summary.md             one-page summary for non-technical readers
+  figures/                         charts used in this README
+app/
+  app.py                           Streamlit dashboard
+  prepare_data.py                  exports the small tables the dashboard reads
+  data/                            those tables (committed, a few hundred KB)
 ```
 
 ## Running it
@@ -96,17 +103,22 @@ pip install -r requirements.txt
 
 Put the Kaggle CSVs in `data/raw/`, then run the notebooks in order. Each one saves what the next needs to `data/processed/`.
 
-## Progress
+## Dashboard
 
-- [x] Define the questions and choose the dataset
-- [x] Data understanding
-- [x] Data cleaning
-- [x] Baseline model
-- [x] Simulator and optimal discount
-- [x] Campaign uplift analysis
-- [ ] Dashboard
-- [ ] One-page executive summary
+```bash
+python app/prepare_data.py   # only needed after re-running the notebooks
+streamlit run app/app.py
+```
+
+Four tabs:
+
+- **Simulator:** pick a category, slide the discount, and see units, revenue and gross profit against today.
+- **All categories:** which categories should be discounted less, more or about the same, and where the biggest profit gaps are.
+- **Baseline vs. promo:** actual sales against the model's baseline, and the share of volume promotions really add.
+- **Coupon campaigns:** the campaign effect and why the uplift model isn't used for targeting.
+
+The sidebar controls the two big assumptions, supplier funding and margins. Every tab recalculates as you move them.
 
 ## Contact
 
-Questions or suggestions are welcome. You can reach me at vachirasakn@gmail.com.
+Questions or suggestions are welcome. You can reach me at [vachirasakn@gmail.com](mailto:vachirasakn@gmail.com).
