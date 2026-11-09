@@ -6,7 +6,7 @@ When a discount drives a spike in sales, most people call it a win. But part of 
 
 I used two years of grocery transactions from about 2,500 households to find out.
 
-**[One-page executive summary](reports/executive_summary.md)** · **[Interactive dashboard](#dashboard)**
+**[One-page executive summary](reports/executive_summary.md)** · **[Live dashboard](https://promo-profit-simulator.streamlit.app)**
 
 ## Key findings
 
@@ -90,6 +90,7 @@ reports/
 app/
   app.py                           Streamlit dashboard
   prepare_data.py                  exports the small tables the dashboard reads
+  requirements.txt                 dashboard-only dependencies (used for deployment)
   data/                            those tables (committed, a few hundred KB)
 ```
 
@@ -104,6 +105,10 @@ pip install -r requirements.txt
 Put the Kaggle CSVs in `data/raw/`, then run the notebooks in order. Each one saves what the next needs to `data/processed/`.
 
 ## Dashboard
+
+**Try it live:** [promo-profit-simulator.streamlit.app](https://promo-profit-simulator.streamlit.app) (it may take about 30 seconds to wake up).
+
+To run it locally:
 
 ```bash
 python app/prepare_data.py   # only needed after re-running the notebooks
