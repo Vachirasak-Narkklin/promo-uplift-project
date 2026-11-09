@@ -42,7 +42,7 @@ data/
 notebooks/
   01_data_understanding.ipynb
   02_eda.ipynb
-  03_baseline_model.ipynb
+  03_model.ipynb
   04_promo_response_simulator.ipynb
   05_uplift_model.ipynb
 sql/              queries for feature preparation
